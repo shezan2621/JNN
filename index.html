@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Neela</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <audio id="birthdayMusic" loop>
+    <source src="birthday-song.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="page">
+    <div class="overlay"></div>
+
+    <main class="card">
+      <img src="neela-face.png" alt="Neela cartoon face" class="face" />
+
+      <h1>Happy Birthday Neela</h1>
+
+      <p class="message">
+        This is not a birthday gift,<br>
+        it’s a journey.
+      </p>
+
+      <p class="instruction">
+        To start the journey, tap the icon below.
+      </p>
+
+      <button class="start-button" onclick="openQR()">
+        ✨
+      </button>
+
+      <p class="tap-text">Tap to begin</p>
+    </main>
+  </div>
+
+  <div id="qrPopup" class="popup">
+    <div class="popup-box">
+      <button class="close-btn" onclick="closeQR()">×</button>
+      <h2>Your first door opens here</h2>
+      <p>Scan this QR code to read the first letter.</p>
+
+      <!-- Replace this image later with the real QR code for letter1.html -->
+      <img src="qr-letter-1.png" alt="QR Code for Letter 1" class="qr" />
+
+      <p class="small-note">
+        This QR code will be added after we create and upload Letter 1.
+      </p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

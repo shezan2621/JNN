@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400">
+<rect width="400" height="400" fill="#ffe0b2"/>
+<circle cx="200" cy="165" r="105" fill="#ffccbc"/>
+<circle cx="160" cy="150" r="12" fill="#3e2723"/>
+<circle cx="240" cy="150" r="12" fill="#3e2723"/>
+<path d="M160 220 Q200 255 240 220" stroke="#3e2723" stroke-width="8" fill="none" stroke-linecap="round"/>
+<path d="M100 105 Q200 20 300 105" fill="#4e342e"/>
+<text x="200" y="350" font-size="28" text-anchor="middle" fill="#5d4037" font-family="Georgia">Neela Face</text>
+</svg>
