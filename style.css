@@ -46,6 +46,17 @@ body {
   text-shadow: 0 3px 14px rgba(0,0,0,0.72);
 }
 
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 h1 {
   font-size: clamp(2.8rem, 6vw, 6.2rem);
   line-height: 0.95;
@@ -70,20 +81,21 @@ h1 span {
 .main-text {
   font-size: clamp(1.2rem, 2vw, 1.75rem);
   line-height: 1.55;
-  margin-bottom: 24px;
+  margin-bottom: 14px;
   font-weight: 600;
 }
 
 .journey-text {
   font-size: clamp(1.1rem, 1.8vw, 1.55rem);
-  line-height: 1.65;
+  line-height: 1.25;
   font-style: italic;
-  margin-bottom: 22px;
+  margin-bottom: 8px;
   color: #ffe9b8;
 }
 
 .begin-line {
   font-size: clamp(1.15rem, 1.8vw, 1.65rem);
+  margin-top: 18px;
   margin-bottom: 32px;
   color: #ffd47a;
   font-style: italic;
@@ -101,7 +113,10 @@ h1 span {
   box-shadow:
     0 0 18px rgba(255, 185, 85, 0.85),
     0 0 42px rgba(255, 139, 48, 0.45);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    opacity 1.2s ease,
+    transform 1.2s ease,
+    box-shadow 0.25s ease;
 }
 
 .journey-button:hover {
@@ -109,6 +124,14 @@ h1 span {
   box-shadow:
     0 0 26px rgba(255, 205, 120, 1),
     0 0 58px rgba(255, 139, 48, 0.6);
+}
+
+.journey-button.reveal {
+  transform: translateY(18px) scale(0.96);
+}
+
+.journey-button.reveal.show {
+  transform: translateY(0) scale(1);
 }
 
 .popup {
