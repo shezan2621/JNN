@@ -46,17 +46,6 @@ body {
   text-shadow: 0 3px 14px rgba(0,0,0,0.72);
 }
 
-.reveal {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 1.2s ease, transform 1.2s ease;
-}
-
-.reveal.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 h1 {
   font-size: clamp(2.8rem, 6vw, 6.2rem);
   line-height: 0.95;
@@ -81,21 +70,20 @@ h1 span {
 .main-text {
   font-size: clamp(1.2rem, 2vw, 1.75rem);
   line-height: 1.55;
-  margin-bottom: 14px;
+  margin-bottom: 24px;
   font-weight: 600;
 }
 
 .journey-text {
   font-size: clamp(1.1rem, 1.8vw, 1.55rem);
-  line-height: 1.25;
+  line-height: 1.65;
   font-style: italic;
-  margin-bottom: 8px;
+  margin-bottom: 22px;
   color: #ffe9b8;
 }
 
 .begin-line {
   font-size: clamp(1.15rem, 1.8vw, 1.65rem);
-  margin-top: 18px;
   margin-bottom: 32px;
   color: #ffd47a;
   font-style: italic;
@@ -113,10 +101,7 @@ h1 span {
   box-shadow:
     0 0 18px rgba(255, 185, 85, 0.85),
     0 0 42px rgba(255, 139, 48, 0.45);
-  transition:
-    opacity 1.2s ease,
-    transform 1.2s ease,
-    box-shadow 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .journey-button:hover {
@@ -124,14 +109,6 @@ h1 span {
   box-shadow:
     0 0 26px rgba(255, 205, 120, 1),
     0 0 58px rgba(255, 139, 48, 0.6);
-}
-
-.journey-button.reveal {
-  transform: translateY(18px) scale(0.96);
-}
-
-.journey-button.reveal.show {
-  transform: translateY(0) scale(1);
 }
 
 .popup {
@@ -190,6 +167,31 @@ h1 span {
   color: #3b2112;
   font-size: 1.8rem;
   cursor: pointer;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1.2s ease forwards;
+}
+
+.reveal:nth-child(1) { animation-delay: 1s; }
+.reveal:nth-child(2) { animation-delay: 2.5s; }
+.reveal:nth-child(3) { animation-delay: 4s; }
+.reveal:nth-child(4) { animation-delay: 5.5s; }
+.reveal:nth-child(5) { animation-delay: 7s; }
+.reveal:nth-child(6) { animation-delay: 8.5s; }
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 800px) {
