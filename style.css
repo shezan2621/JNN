@@ -4,154 +4,192 @@
   box-sizing: border-box;
 }
 
-body {
+html, body {
+  width: 100%;
+  min-height: 100%;
   font-family: Georgia, 'Times New Roman', serif;
-  min-height: 100vh;
-  overflow: hidden;
-  color: white;
+  color: #fff7df;
 }
 
-.page {
+body {
+  overflow-x: hidden;
+  background: #160b08;
+}
+
+.hero {
+  position: relative;
   min-height: 100vh;
-  background:
-    linear-gradient(rgba(0,0,0,0.20), rgba(0,0,0,0.55)),
-    url("sunset-ocean-cartoon.jpg");
+  background-image: url("page1-background.png");
   background-size: cover;
-  background-position: center;
+  background-position: center center;
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 24px;
+  justify-content: flex-end;
+  padding: 40px 7%;
 }
 
-.card {
-  width: min(92%, 430px);
-  padding: 32px 24px;
+.soft-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 75% 45%, rgba(0,0,0,0.12), rgba(0,0,0,0.48)),
+    linear-gradient(to right, rgba(0,0,0,0.05), rgba(0,0,0,0.36));
+  z-index: 1;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  width: min(90vw, 620px);
   text-align: center;
-  border-radius: 28px;
-  background: rgba(255, 255, 255, 0.16);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.35);
-  border: 1px solid rgba(255,255,255,0.25);
-}
-
-.face {
-  width: 118px;
-  height: 118px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 4px solid rgba(255,255,255,0.8);
-  margin-bottom: 18px;
-  background: rgba(255,255,255,0.3);
+  padding: 24px;
+  text-shadow: 0 3px 14px rgba(0,0,0,0.72);
 }
 
 h1 {
-  font-size: 2.3rem;
-  margin-bottom: 16px;
-  text-shadow: 0 3px 10px rgba(0,0,0,0.45);
+  font-size: clamp(2.8rem, 6vw, 6.2rem);
+  line-height: 0.95;
+  font-weight: 400;
+  margin-bottom: 22px;
+  color: #ffe7ad;
+  text-shadow:
+    0 0 12px rgba(255, 202, 117, 0.75),
+    0 4px 22px rgba(0,0,0,0.9);
 }
 
-.message {
-  font-size: 1.35rem;
-  line-height: 1.6;
-  margin-bottom: 18px;
+h1 span {
+  font-size: 1.25em;
 }
 
-.instruction {
-  font-size: 1rem;
-  opacity: 0.95;
-  margin-bottom: 20px;
-}
-
-.start-button {
-  width: 76px;
-  height: 76px;
-  border-radius: 50%;
-  border: none;
+.divider {
   font-size: 2rem;
+  margin: 10px 0 22px;
+  color: #ffd98a;
+}
+
+.main-text {
+  font-size: clamp(1.2rem, 2vw, 1.75rem);
+  line-height: 1.55;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.journey-text {
+  font-size: clamp(1.1rem, 1.8vw, 1.55rem);
+  line-height: 1.65;
+  font-style: italic;
+  margin-bottom: 22px;
+  color: #ffe9b8;
+}
+
+.begin-line {
+  font-size: clamp(1.15rem, 1.8vw, 1.65rem);
+  margin-bottom: 32px;
+  color: #ffd47a;
+  font-style: italic;
+}
+
+.journey-button {
+  border: 2px solid rgba(255, 221, 143, 0.95);
+  border-radius: 22px;
+  padding: 18px 34px;
+  background: rgba(80, 37, 17, 0.72);
+  color: #fff3cf;
+  font-size: clamp(1.1rem, 2vw, 1.55rem);
+  font-family: Georgia, 'Times New Roman', serif;
   cursor: pointer;
-  background: rgba(255, 255, 255, 0.92);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow:
+    0 0 18px rgba(255, 185, 85, 0.85),
+    0 0 42px rgba(255, 139, 48, 0.45);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.start-button:hover {
-  transform: scale(1.08);
-  box-shadow: 0 16px 38px rgba(0,0,0,0.45);
-}
-
-.tap-text {
-  margin-top: 12px;
-  font-size: 0.95rem;
-  opacity: 0.9;
+.journey-button:hover {
+  transform: scale(1.04);
+  box-shadow:
+    0 0 26px rgba(255, 205, 120, 1),
+    0 0 58px rgba(255, 139, 48, 0.6);
 }
 
 .popup {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.72);
   display: none;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  background: rgba(0,0,0,0.72);
+  z-index: 10;
+  padding: 20px;
 }
 
 .popup-box {
   position: relative;
-  width: min(92%, 360px);
+  width: min(92vw, 390px);
+  padding: 30px 24px;
   text-align: center;
-  background: #fff8ef;
-  color: #3b2416;
   border-radius: 24px;
-  padding: 28px 22px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  background: #fff4dc;
+  color: #3b2112;
+  box-shadow: 0 25px 70px rgba(0,0,0,0.55);
 }
 
 .popup-box h2 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
+  font-size: 1.65rem;
+  margin-bottom: 12px;
 }
 
 .popup-box p {
+  font-size: 1rem;
   margin-bottom: 16px;
 }
 
-.qr {
-  width: 210px;
-  height: 210px;
+.qr-img {
+  width: 225px;
+  height: 225px;
   object-fit: contain;
-  border-radius: 14px;
   background: white;
   padding: 10px;
+  border-radius: 16px;
 }
 
 .small-note {
-  font-size: 0.8rem;
-  opacity: 0.75;
   margin-top: 12px;
+  font-size: 0.82rem !important;
+  opacity: 0.75;
 }
 
 .close-btn {
   position: absolute;
-  top: 12px;
+  top: 10px;
   right: 14px;
   border: none;
-  background: transparent;
-  font-size: 1.7rem;
+  background: none;
+  color: #3b2112;
+  font-size: 1.8rem;
   cursor: pointer;
-  color: #3b2416;
 }
 
-@media (max-width: 480px) {
-  h1 {
-    font-size: 2rem;
+@media (max-width: 800px) {
+  .hero {
+    justify-content: center;
+    align-items: flex-end;
+    padding: 28px 16px 42px;
+    background-position: 35% center;
   }
 
-  .message {
-    font-size: 1.2rem;
+  .content {
+    width: 100%;
+    padding: 18px 10px;
   }
 
-  .card {
-    padding: 28px 18px;
+  .main-text,
+  .journey-text,
+  .begin-line {
+    text-shadow: 0 3px 16px rgba(0,0,0,0.95);
+  }
+
+  .journey-button {
+    width: 92%;
+    max-width: 360px;
   }
 }

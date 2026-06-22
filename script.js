@@ -1,12 +1,12 @@
 const music = document.getElementById("birthdayMusic");
 
 function openQR() {
-  document.getElementById("qrPopup").style.display = "flex";
+  const popup = document.getElementById("qrPopup");
+  popup.style.display = "flex";
 
-  // Browsers usually allow music after the user taps something.
-  music.volume = 0.35;
+  music.volume = 0.25;
   music.play().catch(() => {
-    console.log("Music will play after user interaction.");
+    console.log("Music will start after user interaction.");
   });
 }
 
