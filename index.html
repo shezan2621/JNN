@@ -1,58 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Happy Birthday, Nila</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday, Nila</title>
+
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-  <audio id="birthdayMusic" loop>
+<audio id="birthdayMusic" loop>
     <source src="birthday-song.mp3" type="audio/mpeg">
-  </audio>
+</audio>
 
-  <section class="hero">
+<section class="hero">
+
     <div class="soft-overlay"></div>
 
     <div class="content">
-      <h1 class="reveal">Happy Birthday,<br><span>Nila</span></h1>
 
-      <div class="divider reveal">♡</div>
+        <h1 class="reveal">
+            Happy Birthday,<br>
+            <span>Nila</span>
+        </h1>
 
-      <p class="main-text reveal">This is not a birthday gift.</p>
+        <div class="divider reveal">♡</div>
 
-      <p class="main-text reveal">It’s a journey.</p>
+        <p class="main-text reveal">
+            This is not a birthday gift.<br>
+            It's a journey.
+        </p>
 
-      <p class="journey-text reveal">Our journey through memories,</p>
+        <p class="journey-text reveal">
+            Our journey through memories,<br>
+            through moments,<br>
+            through dreams.
+        </p>
 
-      <p class="journey-text reveal">through moments,</p>
+        <p class="begin-line reveal">
+            Let's begin our journey.
+        </p>
 
-      <p class="journey-text reveal">through dreams.</p>
+        <button class="journey-button reveal" onclick="openQR()">
+            ✨ Begin the Journey
+        </button>
 
-      <p class="begin-line reveal">Let’s begin our journey.</p>
-
-      <button class="journey-button reveal" onclick="openQR()">
-        ✨ Begin the Journey
-      </button>
     </div>
-  </section>
 
-  <div id="qrPopup" class="popup">
+</section>
+
+<div id="qrPopup" class="popup">
+
     <div class="popup-box">
-      <button class="close-btn" onclick="closeQR()">×</button>
 
-      <h2>The first door is waiting</h2>
-      <p>Scan this QR code to open the first letter.</p>
+        <button class="close-btn" onclick="closeQR()">×</button>
 
-      <img src="qr-letter-1.png" alt="QR code for the first letter" class="qr-img" />
+        <h2>The first door is waiting</h2>
 
-      <p class="small-note">
-        This QR code will be replaced after we create Letter 1.
-      </p>
+        <p>
+            Scan this QR code to open the first letter.
+        </p>
+
+        <img
+            src="qr-letter-1.png"
+            alt="QR Code"
+            class="qr-img"
+        >
+
     </div>
-  </div>
 
-  <script src="script.js"></script>
+</div>
+
+<script src="script.js"></script>
+
 </body>
 </html>
