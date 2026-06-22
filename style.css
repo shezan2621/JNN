@@ -19,7 +19,7 @@ body {
 .hero {
   position: relative;
   min-height: 100vh;
-  background-image: url("chapter1-background.png");
+  background-image: url("page1-background.png");
   background-size: cover;
   background-position: center center;
   display: flex;
