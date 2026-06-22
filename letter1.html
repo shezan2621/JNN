@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 1 - Where It All Began</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  min-height: 100vh;
+  font-family: Georgia, 'Times New Roman', serif;
+  background: linear-gradient(rgba(35,18,8,.78), rgba(35,18,8,.78)), url("page1-background.png");
+  background-size: cover;
+  background-position: center;
+  color: #3b2415;
+  padding: 30px 16px;
+}
+.book-wrapper { max-width: 850px; margin: 0 auto; perspective: 1200px; }
+.book {
+  background: #fff4d8;
+  border-radius: 22px;
+  padding: 42px 38px;
+  box-shadow: 0 25px 70px rgba(0,0,0,.55), inset 0 0 35px rgba(120,70,25,.18);
+  border: 1px solid rgba(90,45,15,.25);
+  animation: openBook 1.6s ease forwards;
+  transform-origin: left center;
+}
+@keyframes openBook {
+  from { opacity: 0; transform: rotateY(-10deg) translateY(25px); }
+  to { opacity: 1; transform: rotateY(0deg) translateY(0); }
+}
+.chapter { text-align: center; margin-bottom: 32px; }
+.chapter small { display: block; font-size: 1rem; letter-spacing: 3px; color: #8a5b2e; margin-bottom: 10px; text-transform: uppercase; }
+h1 { font-size: clamp(2rem, 5vw, 3.4rem); color: #5a2e17; margin-bottom: 8px; }
+.years { color: #9a6a34; font-style: italic; font-size: 1.1rem; }
+.divider { text-align: center; color: #b47a34; font-size: 1.5rem; margin: 24px 0; }
+.letter p { font-size: 1.16rem; line-height: 1.9; margin-bottom: 20px; text-align: justify; }
+.ending { text-align: center; margin-top: 34px; padding-top: 24px; border-top: 1px solid rgba(120,70,25,.25); }
+.ending p { text-align: center; font-size: 1.15rem; color: #6a3b1e; margin-bottom: 18px; }
+.continue-button {
+  display: inline-block;
+  padding: 15px 28px;
+  border-radius: 18px;
+  border: 2px solid #9c672d;
+  background: #6a3519;
+  color: #fff4d8;
+  text-decoration: none;
+  font-size: 1.15rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,.28);
+}
+.note { margin-top: 14px; font-size: .9rem; color: #8a5b2e; text-align: center; }
+@media (max-width: 600px) {
+  body { padding: 18px 10px; }
+  .book { padding: 30px 22px; border-radius: 18px; }
+  .letter p { font-size: 1.02rem; line-height: 1.75; text-align: left; }
+}
+</style>
+</head>
+<body>
+<div class="book-wrapper">
+  <article class="book">
+    <header class="chapter">
+      <small>Chapter 1</small>
+      <h1>Where It All Began</h1>
+      <div class="years">2014–2016</div>
+    </header>
+    <div class="divider">♡</div>
+    <section class="letter">
+      <p>Before I tell you how much you mean to me today, I want to take you back to where our story began.</p>
+      <p>The first time I met you was in 2014. I had just started university, and I came to your house as your home tutor. You were in Class Five then. Looking back now, it feels almost impossible to believe that neither of us had any idea where life would eventually lead us.</p>
+      <p>At the beginning, we hardly talked beyond studies. I was quite shy and reserved, especially because I had never taught a girl before. I was still trying to find my confidence as a new tutor, while you always seemed much more comfortable and free around me.</p>
+      <p>After your PSC examination in December 2014, our classes came to an end. I thought that chapter of my life was over.</p>
+      <p>But life had other plans for us.</p>
+      <p>A few months later, around March or April of 2015, I was asked to teach you again. What seemed like a simple return to tutoring slowly became something much more meaningful.</p>
+      <p>As time passed, we became very good friends. Our conversations were no longer limited to books and homework. You shared your thoughts, your stories, your little joys and worries, and without even realizing it, I found myself looking forward to those conversations more than I should have.</p>
+      <p>Some of my favorite memories from those years are not grand events. They are the simple moments—the laughter, the teasing, the endless conversations, and the comfort of being able to talk to each other so naturally.</p>
+      <p>There was something special about those days.</p>
+      <p>By 2016, I had started to like you in a way I had never liked anyone before. At that time, I was far too reserved to ever let you notice. I kept those feelings entirely to myself. Even then, what mattered most to me was our friendship and the happiness we found in simply talking to each other.</p>
+      <p>What I did not know was that somewhere in your heart, you had your own feelings too.</p>
+      <p>When I look back today, I realize that our story did not begin with a dramatic moment.</p>
+      <p>It began with friendship.</p>
+      <p>It began with trust.</p>
+      <p>It began with two people who genuinely enjoyed each other's company without knowing what the future had in store for them.</p>
+      <p>As 2016 came to an end and you moved from Class Seven to Class Eight, neither of us knew that this friendship would one day become one of the most important relationships of our lives.</p>
+      <p>Neither of us knew that one day we would look back at these memories and smile.</p>
+      <p>Neither of us knew that this was only the first page of a much bigger story.</p>
+      <p>And that was only the beginning.</p>
+    </section>
+    <div class="ending">
+      <p>To continue this journey, tap the button below.</p>
+      <a class="continue-button" href="#">Continue to Chapter 2</a>
+      <div class="note">Chapter 2 will be connected here later.</div>
+    </div>
+  </article>
+</div>
+</body>
+</html>
