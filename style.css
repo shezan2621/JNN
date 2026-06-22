@@ -46,6 +46,33 @@ body {
   text-shadow: 0 3px 14px rgba(0,0,0,0.72);
 }
 
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1.2s ease forwards;
+}
+
+.reveal:nth-of-type(1) { animation-delay: 1s; }
+.reveal:nth-of-type(2) { animation-delay: 2.5s; }
+.reveal:nth-of-type(3) { animation-delay: 4s; }
+.reveal:nth-of-type(4) { animation-delay: 5.5s; }
+.reveal:nth-of-type(5) { animation-delay: 7s; }
+.reveal:nth-of-type(6) { animation-delay: 8.5s; }
+
+.content .reveal:nth-child(1) { animation-delay: 1s; }
+.content .reveal:nth-child(2) { animation-delay: 2.5s; }
+.content .reveal:nth-child(3) { animation-delay: 4s; }
+.content .reveal:nth-child(4) { animation-delay: 5.5s; }
+.content .reveal:nth-child(5) { animation-delay: 7s; }
+.content .reveal:nth-child(6) { animation-delay: 8.5s; }
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 h1 {
   font-size: clamp(2.8rem, 6vw, 6.2rem);
   line-height: 0.95;
@@ -101,14 +128,6 @@ h1 span {
   box-shadow:
     0 0 18px rgba(255, 185, 85, 0.85),
     0 0 42px rgba(255, 139, 48, 0.45);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.journey-button:hover {
-  transform: scale(1.04);
-  box-shadow:
-    0 0 26px rgba(255, 205, 120, 1),
-    0 0 58px rgba(255, 139, 48, 0.6);
 }
 
 .popup {
@@ -130,17 +149,6 @@ h1 span {
   border-radius: 24px;
   background: #fff4dc;
   color: #3b2112;
-  box-shadow: 0 25px 70px rgba(0,0,0,0.55);
-}
-
-.popup-box h2 {
-  font-size: 1.65rem;
-  margin-bottom: 12px;
-}
-
-.popup-box p {
-  font-size: 1rem;
-  margin-bottom: 16px;
 }
 
 .qr-img {
@@ -150,12 +158,6 @@ h1 span {
   background: white;
   padding: 10px;
   border-radius: 16px;
-}
-
-.small-note {
-  margin-top: 12px;
-  font-size: 0.82rem !important;
-  opacity: 0.75;
 }
 
 .close-btn {
@@ -169,31 +171,6 @@ h1 span {
   cursor: pointer;
 }
 
-.reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 1.2s ease forwards;
-}
-
-.reveal:nth-child(1) { animation-delay: 1s; }
-.reveal:nth-child(2) { animation-delay: 2.5s; }
-.reveal:nth-child(3) { animation-delay: 4s; }
-.reveal:nth-child(4) { animation-delay: 5.5s; }
-.reveal:nth-child(5) { animation-delay: 7s; }
-.reveal:nth-child(6) { animation-delay: 8.5s; }
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 @media (max-width: 800px) {
   .hero {
     justify-content: center;
@@ -205,12 +182,6 @@ h1 span {
   .content {
     width: 100%;
     padding: 18px 10px;
-  }
-
-  .main-text,
-  .journey-text,
-  .begin-line {
-    text-shadow: 0 3px 16px rgba(0,0,0,0.95);
   }
 
   .journey-button {
