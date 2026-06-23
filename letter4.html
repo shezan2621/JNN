@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 4 - Through Every Storm</title>
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  min-height: 100vh;
+  font-family: Georgia, 'Times New Roman', serif;
+  color: #3b2415;
+  padding: 30px 16px;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+body.page-2024 {
+  background:
+    linear-gradient(rgba(12, 8, 8, 0.46), rgba(12, 8, 8, 0.64)),
+    url("chapter4-2024.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+body.page-2025 {
+  background:
+    linear-gradient(rgba(20, 10, 5, 0.25), rgba(20, 10, 5, 0.48)),
+    url("chapter4-2025.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+body.page-2026 {
+  background:
+    linear-gradient(rgba(10, 8, 10, 0.42), rgba(10, 8, 10, 0.62)),
+    url("chapter4-2026.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.chapter-title {
+  text-align: center;
+  color: #fff4d8;
+  text-shadow: 0 4px 16px rgba(0,0,0,.9);
+  margin-bottom: 24px;
+  opacity: 0;
+  animation: fadeInTitle 1.5s ease forwards;
+}
+
+.chapter-title h1 {
+  font-size: clamp(2.3rem, 5vw, 3.6rem);
+  margin-bottom: 8px;
+}
+
+.chapter-title p {
+  font-size: 1.1rem;
+  font-style: italic;
+  margin-bottom: 4px;
+}
+
+@keyframes fadeInTitle {
+  from { opacity: 0; transform: translateY(-18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.book-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(35px) scale(.97);
+  transition: opacity 1.3s ease, transform 1.3s ease;
+}
+
+.book-wrapper.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.book-wrapper.hide {
+  opacity: 0;
+  transform: translateY(35px) scale(.97);
+}
+
+.book {
+  background: rgba(255, 244, 216, 0.94);
+  border-radius: 24px;
+  padding: 44px 40px;
+  box-shadow: 0 25px 75px rgba(0,0,0,.62), inset 0 0 35px rgba(120,70,25,.18);
+  border: 1px solid rgba(90,45,15,.25);
+  min-height: 70vh;
+}
+
+.page-marker {
+  text-align: right;
+  color: #9a6a34;
+  font-style: italic;
+  font-size: .95rem;
+  margin-bottom: 18px;
+}
+
+.page h2 {
+  text-align: center;
+  color: #5a2e17;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  margin-bottom: 28px;
+}
+
+.divider {
+  text-align: center;
+  color: #b47a34;
+  font-size: 1.5rem;
+  margin: 24px 0;
+}
+
+.page p {
+  font-size: 1.14rem;
+  line-height: 1.9;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+.center-line {
+  text-align: center !important;
+  font-size: 1.2rem !important;
+  color: #6a3519;
+  font-weight: bold;
+}
+
+.nav-area {
+  text-align: center;
+  margin-top: 34px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(120,70,25,.25);
+}
+
+.turn-button {
+  display: inline-block;
+  padding: 15px 30px;
+  border-radius: 18px;
+  border: 2px solid #9c672d;
+  background: #6a3519;
+  color: #fff4d8;
+  font-size: 1.12rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,.28);
+  cursor: pointer;
+}
+
+.turn-button:hover { background: #522812; }
+
+.transition-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff4d8;
+  background: rgba(0,0,0,.38);
+  text-shadow: 0 4px 18px rgba(0,0,0,.9);
+  padding: 20px;
+}
+
+.transition-screen.show {
+  display: flex;
+  animation: transitionFade 1.8s ease forwards;
+}
+
+.transition-screen h2 {
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  margin-bottom: 8px;
+}
+
+.transition-screen p {
+  font-size: 1.2rem;
+  font-style: italic;
+}
+
+@keyframes transitionFade {
+  from { opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.qr-popup {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  z-index: 999;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.qr-box {
+  background: rgba(255, 244, 216, 0.98);
+  border-radius: 22px;
+  padding: 28px 24px;
+  max-width: 360px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 25px 70px rgba(0,0,0,.55);
+  border: 1px solid rgba(90,45,15,.25);
+}
+
+.qr-box h2 {
+  color: #5a2e17;
+  margin-bottom: 10px;
+  font-size: 1.7rem;
+}
+
+.qr-box p {
+  color: #6a3b1e;
+  margin-bottom: 18px;
+  line-height: 1.5;
+}
+
+.qr-box img {
+  width: 230px;
+  max-width: 100%;
+  border-radius: 12px;
+  background: white;
+  padding: 10px;
+  margin-bottom: 18px;
+}
+
+.close-button {
+  padding: 11px 22px;
+  border-radius: 16px;
+  border: none;
+  background: #6a3519;
+  color: #fff4d8;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.close-button:hover { background: #522812; }
+
+@media (max-width: 600px) {
+  body { padding: 18px 10px; background-attachment: scroll; }
+  body.page-2024, body.page-2025, body.page-2026 { background-attachment: scroll; }
+  .book { padding: 30px 22px; border-radius: 18px; }
+  .page p { font-size: 1.02rem; line-height: 1.75; text-align: left; }
+}
+</style>
+</head>
+
+<body class="page-2024">
+
+<header class="chapter-title">
+  <h1>Chapter 4</h1>
+  <p>Through Every Storm</p>
+  <p>2024 — 2026</p>
+</header>
+
+<div class="transition-screen" id="transitionScreen">
+  <div>
+    <h2 id="transitionYear">2024</h2>
+    <p id="transitionText">The year we were tested.</p>
+  </div>
+</div>
+
+<div class="book-wrapper" id="bookWrapper">
+  <article class="book">
+    <div class="page-marker" id="pageMarker">2024 · Page I</div>
+    <section class="page" id="pageContent"></section>
+    <div class="nav-area">
+      <button class="turn-button" id="nextButton" onclick="nextPage()">Turn the Page →</button>
+    </div>
+  </article>
+</div>
+
+<div class="qr-popup" id="qrPopup">
+  <div class="qr-box">
+    <h2>Scan QR #5</h2>
+    <p>Scan this QR code to unlock the final chapter.</p>
+    <img src="qr5.png" alt="QR Code for Chapter 5">
+    <br>
+    <button class="close-button" onclick="closePopup()">Close</button>
+  </div>
+</div>
+
+<script>
+const pages = [
+  {
+    year: "2024",
+    marker: "2024 · Page I",
+    bodyClass: "page-2024",
+    transitionText: "The year we were tested.",
+    button: "Turn the Page →",
+    html: `
+      <h2>2024 — The Year of Distance</h2>
+      <div class="divider">♡</div>
+      <p>Every story has its difficult chapters.</p>
+      <p>For us, that chapter was 2024.</p>
+      <p>Looking back on our ten-year journey, I can honestly say that it may have been the most fragile period of our relationship.</p>
+      <p>There were misunderstandings.</p>
+      <p>There was distance.</p>
+      <p>There were moments when conversations became shorter and silence became longer.</p>
+      <p>Sometimes, it felt as though every few days we would find ourselves arguing over something small, while the real problem was the distance that neither of us knew how to fight.</p>
+      <p>There were moments when it seemed as though everything could fall apart.</p>
+      <p>Moments when our relationship stood at a crossroads.</p>
+      <p>And if life had unfolded a little differently, perhaps our story could have ended there.</p>
+      <p>There were moments when we questioned things we had never questioned before.</p>
+      <p>Moments when both of us felt tired.</p>
+      <p>Moments when neither of us knew what the other was truly feeling.</p>
+      <p>The distance between Bangladesh and Canada was no longer measured in kilometers.</p>
+      <p>It was measured in misunderstandings.</p>
+      <p>And sometimes that distance felt much harder to cross.</p>
+      <p>There were days when I wondered whether we would find our way back to each other.</p>
+      <p>And perhaps you wondered the same thing too.</p>
+      <p>But Alhamdulillah, it did not end there.</p>
+      <p>Somehow, even during our weakest moments, neither of us completely let go of the other's hand.</p>
+      <p>We were hurt.</p>
+      <p>We were frustrated.</p>
+      <p>We were uncertain.</p>
+      <p>Yet beneath all of those emotions, something remained unchanged.</p>
+      <p>We still cared.</p>
+      <p>We still hoped.</p>
+      <p>And we still wanted a future together.</p>
+      <p>That is how 2024 came to an end.</p>
+      <p>Not with certainty.</p>
+      <p>But with faith.</p>
+    `
+  },
+  {
+    year: "2025",
+    marker: "2025 · Page II",
+    bodyClass: "page-2025",
+    transitionText: "The year we found our way back.",
+    button: "Turn the Page →",
+    html: `
+      <h2>2025 — Finding Our Way Back</h2>
+      <div class="divider">♡</div>
+      <p>Then came 2025.</p>
+      <p>For the first time since moving to Canada, I returned to Bangladesh.</p>
+      <p>I still remember the moment we saw each other again.</p>
+      <p>Something remarkable happened.</p>
+      <p>The misunderstandings that had felt so heavy suddenly seemed much smaller.</p>
+      <p>The distance that had grown between us seemed to disappear.</p>
+      <p>It was as though seeing each other reminded us of everything that had been buried beneath the stress, the uncertainty, and the challenges of the previous year.</p>
+      <p>When I saw you again, something unexpected happened.</p>
+      <p>For months we had been carrying frustration, disappointment, and unanswered questions.</p>
+      <p>Yet the moment we stood in front of each other, none of those things seemed as important as they once had.</p>
+      <p>It felt as though our hearts remembered something that our minds had forgotten.</p>
+      <p>We were not strangers.</p>
+      <p>We were not opponents.</p>
+      <p>We were simply two people who had spent years choosing each other.</p>
+      <p>We spent time together.</p>
+      <p>We went out together.</p>
+      <p>We laughed together.</p>
+      <p>And for the first time in a long while, everything felt natural again.</p>
+      <p>If someone had seen us during those days, they would never have guessed how close we had come to losing what we had.</p>
+      <p>That visit reminded us why we had held on for so long.</p>
+      <p>It reminded us why our story was worth fighting for.</p>
+      <p>During that time, we made a promise to each other.</p>
+      <p>A simple promise.</p>
+      <p>That we would remain together.</p>
+      <p>That, In Sha Allah, the next time I returned, I would marry you.</p>
+      <p>When I came back to Canada, our relationship felt stronger than it had been in a very long time.</p>
+      <p>It felt as though a flower that had nearly withered had begun to bloom again.</p>
+      <p>Day by day, our trust returned.</p>
+      <p>Our understanding returned.</p>
+      <p>And our journey continued.</p>
+      <p>Alhamdulillah, 2025 ended on a beautiful note.</p>
+      <p>We were moving forward.</p>
+      <p>Not perfectly.</p>
+      <p>But together.</p>
+    `
+  },
+  {
+    year: "2026",
+    marker: "2026 · Page III",
+    bodyClass: "page-2026",
+    transitionText: "The year we chose each other.",
+    button: "Continue to Chapter 5",
+    html: `
+      <h2>2026 — A Dream Delayed</h2>
+      <div class="divider">♡</div>
+      <p>Then came 2026.</p>
+      <p>I returned to Bangladesh once again.</p>
+      <p>This time, I came with certainty in my heart.</p>
+      <p>I came believing that this would finally be the year.</p>
+      <p>I imagined marrying you.</p>
+      <p>I imagined creating new memories together.</p>
+      <p>I imagined us walking along the beach in Cox's Bazar, watching the sunset side by side, no longer separated by countries, distance, or uncertainty.</p>
+      <p>For a while, it seemed as though everything was moving in that direction.</p>
+      <p>But life tested us once again.</p>
+      <p>Conversations between our families did not unfold as we had hoped.</p>
+      <p>Unexpected difficulties appeared.</p>
+      <p>And slowly, the future we had imagined began to slip away.</p>
+      <p>At one point, it felt as though everything had come to an end.</p>
+      <p>Not because we stopped loving each other.</p>
+      <p>But because circumstances became bigger than either of us.</p>
+      <p>Leaving Bangladesh that time was one of the hardest things I have ever done.</p>
+      <p>I returned to Canada carrying a sadness that is difficult to describe.</p>
+      <p>Because I knew that something important had been lost.</p>
+      <p>A dream had been delayed.</p>
+      <p>A chapter had remained unfinished.</p>
+      <p>Yet even then, we refused to give up.</p>
+      <p>We chose hope.</p>
+      <p>We chose patience.</p>
+      <p>And most importantly, we chose each other.</p>
+      <p>Today, despite every challenge, every misunderstanding, every distance, and every obstacle that has stood in our way, Alhamdulillah, we are still here.</p>
+      <p>Stronger.</p>
+      <p>Wiser.</p>
+      <p>More patient.</p>
+      <p>And perhaps more certain than ever before.</p>
+      <p>Over the past ten years, our relationship has experienced friendship, distance, joy, fear, uncertainty, sacrifice, and countless memories.</p>
+      <p>And through all of it, one thing has remained constant:</p>
+      <p class="center-line">You.</p>
+      <p>No matter what happened, no matter how difficult the road became, you remained one of the most important people in my life.</p>
+      <p>As I write these words today, I still hold onto the same dream.</p>
+      <p>A dream that has survived every misunderstanding.</p>
+      <p>Every distance.</p>
+      <p>Every disappointment.</p>
+      <p>Every delay.</p>
+      <p>I still dream of the day when we will stand together on the beach in Cox's Bazar, watching the sunset side by side.</p>
+      <p>And when that day finally comes, we will realize that none of these difficult chapters were the end of our story.</p>
+      <p>They were only preparing us for the chapter that is still waiting ahead.</p>
+      <p>The chapter that has not been written yet.</p>
+    `
+  }
+];
+
+let currentPage = 0;
+
+function renderPage(index, firstLoad = false) {
+  const page = pages[index];
+  const book = document.getElementById("bookWrapper");
+  const pageContent = document.getElementById("pageContent");
+  const pageMarker = document.getElementById("pageMarker");
+  const nextButton = document.getElementById("nextButton");
+  const transitionScreen = document.getElementById("transitionScreen");
+  const transitionYear = document.getElementById("transitionYear");
+  const transitionText = document.getElementById("transitionText");
+
+  document.body.className = page.bodyClass;
+  pageContent.innerHTML = page.html;
+  pageMarker.textContent = page.marker;
+  nextButton.textContent = page.button;
+  transitionYear.textContent = page.year;
+  transitionText.textContent = page.transitionText;
+
+  book.classList.remove("show");
+  book.classList.add("hide");
+  transitionScreen.classList.add("show");
+
+  setTimeout(() => {
+    transitionScreen.classList.remove("show");
+    book.classList.remove("hide");
+    book.classList.add("show");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, firstLoad ? 2200 : 2300);
+}
+
+function nextPage() {
+  if (currentPage < pages.length - 1) {
+    currentPage++;
+    renderPage(currentPage);
+  } else {
+    openPopup();
+  }
+}
+
+function openPopup() {
+  document.getElementById("qrPopup").style.display = "flex";
+}
+
+function closePopup() {
+  document.getElementById("qrPopup").style.display = "none";
+}
+
+document.getElementById("qrPopup").addEventListener("click", function(event) {
+  if (event.target === this) {
+    closePopup();
+  }
+});
+
+window.onload = function() {
+  renderPage(0, true);
+};
+</script>
+
+</body>
+</html>
