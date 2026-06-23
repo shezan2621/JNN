@@ -118,6 +118,11 @@ h1 {
   text-decoration: none;
   font-size: 1.15rem;
   box-shadow: 0 10px 25px rgba(0,0,0,.28);
+  cursor: pointer;
+}
+
+.continue-button:hover {
+  background: #522812;
 }
 
 .note {
@@ -125,6 +130,64 @@ h1 {
   font-size: .9rem;
   color: #8a5b2e;
   text-align: center;
+}
+
+/* QR Popup */
+.qr-popup {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  z-index: 999;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.qr-box {
+  background: rgba(255, 244, 216, 0.98);
+  border-radius: 22px;
+  padding: 28px 24px;
+  max-width: 360px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 25px 70px rgba(0,0,0,.55);
+  border: 1px solid rgba(90,45,15,.25);
+}
+
+.qr-box h2 {
+  color: #5a2e17;
+  margin-bottom: 10px;
+  font-size: 1.7rem;
+}
+
+.qr-box p {
+  color: #6a3b1e;
+  margin-bottom: 18px;
+  line-height: 1.5;
+}
+
+.qr-box img {
+  width: 230px;
+  max-width: 100%;
+  border-radius: 12px;
+  background: white;
+  padding: 10px;
+  margin-bottom: 18px;
+}
+
+.close-button {
+  padding: 11px 22px;
+  border-radius: 16px;
+  border: none;
+  background: #6a3519;
+  color: #fff4d8;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  background: #522812;
 }
 
 @media (max-width: 600px) {
@@ -271,17 +334,43 @@ h1 {
 <div class="ending">
   <p>To continue our story, scan the next QR code.</p>
 
-  <a class="continue-button" href="#">
+  <button class="continue-button" onclick="openPopup()">
     Continue to Chapter 3
-  </a>
+  </button>
 
   <div class="note">
-    Chapter 3 will be connected here later.
+    Scan QR #3 to unlock Chapter 3.
   </div>
 </div>
 
 </article>
 </div>
+
+<div class="qr-popup" id="qrPopup">
+  <div class="qr-box">
+    <h2>Scan QR #3</h2>
+    <p>Scan this QR code to unlock Chapter 3.</p>
+    <img src="qr3.png" alt="QR Code for Chapter 3">
+    <br>
+    <button class="close-button" onclick="closePopup()">Close</button>
+  </div>
+</div>
+
+<script>
+function openPopup() {
+  document.getElementById("qrPopup").style.display = "flex";
+}
+
+function closePopup() {
+  document.getElementById("qrPopup").style.display = "none";
+}
+
+document.getElementById("qrPopup").addEventListener("click", function(event) {
+  if (event.target === this) {
+    closePopup();
+  }
+});
+</script>
 
 </body>
 </html>
