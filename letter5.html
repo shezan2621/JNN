@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 5 - The Chapter I Still Dream About</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  min-height:100vh;
+  font-family:Georgia,'Times New Roman',serif;
+  background:linear-gradient(rgba(27,15,8,.40),rgba(27,15,8,.68)),url("chapter5-background.png");
+  background-size:cover;background-position:center;background-attachment:fixed;
+  color:#3b2415;padding:30px 16px;overflow-x:hidden
+}
+.intro{text-align:center;color:#fff4d8;margin:35px auto 25px;text-shadow:0 4px 14px rgba(0,0,0,.75);animation:fadeIn 1.8s ease forwards}
+.intro h1{font-size:clamp(2.4rem,5vw,3.5rem);margin-bottom:8px}
+.intro p{font-size:20px;font-style:italic;margin-bottom:5px}
+.book-wrapper{max-width:900px;margin:0 auto 40px;opacity:0;transform:translateY(25px);animation:bookAppear 1.4s ease forwards;animation-delay:2s}
+.book-wrapper.hide{animation:none;opacity:0;transform:translateY(25px) scale(.97);transition:opacity 1s ease,transform 1s ease}
+.book{background:rgba(255,244,216,.95);border:2px solid rgba(92,54,25,.4);border-radius:20px;padding:42px 36px;box-shadow:0 18px 55px rgba(0,0,0,.46),inset 0 0 35px rgba(120,70,25,.18);line-height:1.85;font-size:18px}
+.book h2{text-align:center;color:#5a3218;font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:8px}
+.subtitle{text-align:center;color:#8b5a2b;font-style:italic;margin-bottom:28px}
+.divider{text-align:center;color:#b47a34;font-size:1.5rem;margin:24px 0}
+p{margin-bottom:18px;text-align:justify}
+.center{text-align:center}
+.signature{text-align:center;margin-top:24px;color:#6a3518;font-weight:bold}
+.finish-area{text-align:center;margin-top:34px;padding-top:24px;border-top:1px solid rgba(120,70,25,.25)}
+.finish-btn,.choice-btn{padding:14px 28px;background:#7b3f1d;color:white;border:none;border-radius:30px;font-size:17px;cursor:pointer;font-family:Georgia,'Times New Roman',serif;box-shadow:0 7px 18px rgba(0,0,0,.25);text-decoration:none;display:inline-block}
+.finish-btn:hover,.choice-btn:hover{background:#5f2f15}
+.final-stage{display:none;position:fixed;inset:0;z-index:50;justify-content:center;align-items:center;padding:24px;background:rgba(0,0,0,.28)}
+.final-stage.show{display:flex}
+.final-book{width:min(640px,92vw);min-height:420px;background:linear-gradient(90deg,rgba(235,210,160,.40) 0%,rgba(255,244,216,.98) 9%,rgba(255,244,216,.98) 91%,rgba(165,105,50,.35) 100%);border-radius:24px;border:2px solid rgba(92,54,25,.45);box-shadow:0 25px 80px rgba(0,0,0,.65),inset 0 0 45px rgba(120,70,25,.22);display:flex;justify-content:center;align-items:center;padding:44px;transform-origin:left center;animation:finalBookOpen 1.2s ease forwards;position:relative}
+.final-book:before{content:"";position:absolute;left:50%;top:7%;bottom:7%;width:2px;background:rgba(120,70,25,.18);box-shadow:0 0 16px rgba(120,70,25,.25)}
+.final-message{text-align:center;color:#5a3218;font-size:clamp(1.7rem,5vw,3rem);line-height:1.5;text-shadow:0 2px 10px rgba(255,255,255,.5);z-index:2}
+.final-heart{font-size:clamp(2rem,6vw,3.5rem);margin:14px 0;color:#8a3f22}
+.final-book.closing{animation:closeBook 1.3s ease forwards}
+.question-stage{display:none;position:fixed;inset:0;z-index:60;justify-content:center;align-items:center;padding:24px;text-align:center;background:rgba(0,0,0,.22)}
+.question-stage.show{display:flex;animation:fadeIn 1.4s ease forwards}
+.question-card{background:rgba(255,244,216,.18);border:1px solid rgba(255,244,216,.35);backdrop-filter:blur(7px);border-radius:28px;padding:34px 28px;color:#fff4d8;text-shadow:0 4px 16px rgba(0,0,0,.85);box-shadow:0 18px 55px rgba(0,0,0,.35)}
+.question-card h2{font-size:clamp(2rem,6vw,3.4rem);margin-bottom:12px}
+.question-card p{text-align:center;font-size:clamp(1.25rem,4vw,2rem);margin-bottom:24px}
+.choice-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.choice-btn{background:rgba(123,63,29,.92)}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes bookAppear{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
+@keyframes finalBookOpen{from{opacity:0;transform:scale(.93) rotateY(-18deg)}to{opacity:1;transform:scale(1) rotateY(0)}}
+@keyframes closeBook{from{opacity:1;transform:scale(1) rotateY(0)}to{opacity:0;transform:scale(.85) rotateY(-86deg)}}
+@media(max-width:600px){body{padding:18px 10px;background-attachment:scroll}.intro p{font-size:17px}.book{padding:30px 22px;font-size:16px;border-radius:18px}p{text-align:left}.final-book{min-height:340px;padding:30px 22px}}
+</style>
+</head>
+<body>
+<div class="intro" id="mainIntro">
+  <h1>Chapter 5</h1>
+  <p>The Chapter I Still Dream About</p>
+  <p>A Letter From The Future</p>
+</div>
+
+<div class="book-wrapper" id="mainBook">
+<article class="book">
+<h2>The Chapter I Still Dream About</h2>
+<div class="subtitle">A Letter From The Future</div>
+<div class="divider">♡</div>
+
+<p>After everything we have lived through, there is one final chapter I want to share with you.</p>
+<p>Not a chapter from our past.</p>
+<p>A chapter from our future.</p>
+<p>Sometimes I close my eyes and imagine a day that has not arrived yet.</p>
+<p>The sun is slowly setting over Cox's Bazar.</p>
+<p>The sky is painted with shades of orange and gold.</p>
+<p>You and I are walking side by side along the shoreline, our hands gently holding each other. The waves reach our feet and then disappear again, as if the sea itself is quietly telling our story.</p>
+<p>For a moment, everything feels peaceful.</p>
+<p>Then suddenly, a little girl comes running towards us from a distance, laughing as she tries to reach us before the next wave arrives.</p>
+<p>That little girl is not a stranger.</p>
+<p>She is our daughter, Suzana.</p>
+<p>As we stand there watching her play, my phone rings.</p>
+<p>It is Amma.</p>
+<p>In her familiar voice, she asks,</p>
+<p class="center">"When are you and Nila coming home?"</p>
+<p>And I smile and reply,</p>
+<p class="center">"In Sha Allah, tomorrow."</p>
+<p>It is such a simple conversation.</p>
+<p>Yet somehow, it feels like one of the most beautiful moments I can imagine.</p>
+<p>I often dream about the life that follows.</p>
+<p>A home of our own.</p>
+<p>Maybe not the biggest house in the world.</p>
+<p>Maybe not the most expensive.</p>
+<p>But warm.</p>
+<p>Comfortable.</p>
+<p>Filled with laughter.</p>
+<p>Filled with memories.</p>
+<p>And beautifully designed by the person who has always had better taste than me—you.</p>
+<p>I imagine our mornings.</p>
+<p>Waking up beside you.</p>
+<p>Sharing breakfast together.</p>
+<p>Beginning another ordinary day that somehow feels special simply because we are sharing it.</p>
+<p>I imagine leaving for work after placing a kiss on your forehead and asking Allah to bless our day.</p>
+<p>Then calling you after arriving and saying,</p>
+<p class="center">"Alhamdulillah, I reached safely."</p>
+<p>I imagine coming home after a long day and finding you waiting at the door.</p>
+<p>Just as you used to wait for me years ago.</p>
+<p>Some things change with time.</p>
+<p>Some things never do.</p>
+<p>I imagine evenings spent together with Amma, Abba, you, me, and our little Suzana.</p>
+<p>Planning small trips.</p>
+<p>Sharing stories.</p>
+<p>Laughing about ordinary things that somehow become extraordinary when shared with the people we love.</p>
+<p>Most of all, I imagine the days themselves.</p>
+<p>One day becoming another.</p>
+<p>One page becoming another.</p>
+<p>One memory becoming another.</p>
+<p>And our story continuing to grow, chapter after chapter, year after year.</p>
+<p>Because when I think about the future, I do not dream about wealth or success first.</p>
+<p>I dream about moments.</p>
+<p>The small moments.</p>
+<p>The ordinary moments.</p>
+<p>The moments that seem insignificant while they are happening.</p>
+<p>Yet become the memories we treasure most years later.</p>
+<p>Because those moments are the ones we get to share together.</p>
+<p>And before I end this final chapter, there is only one thing left to say.</p>
+<p>Whether it is the Nila from my memories,</p>
+<p>The Nila who is part of my present,</p>
+<p>Or the Nila I dream of spending my future with,</p>
+<p>My answer will always remain the same.</p>
+<p class="center">I love you.</p>
+<p class="center">I loved you yesterday.</p>
+<p class="center">I love you today.</p>
+<p>And In Sha Allah, I will continue loving you in every chapter that is still waiting to be written.</p>
+
+<p class="signature">Happy Birthday, Nila.</p>
+<p class="signature">And thank you for being my favorite chapter.</p>
+<p class="signature">With all my love,</p>
+<p class="signature">Shezan</p>
+<p class="signature">To Be Continued...</p>
+
+<div class="finish-area">
+  <button class="finish-btn" onclick="finishLetter()">Finish</button>
+</div>
+</article>
+</div>
+
+<div class="final-stage" id="finalStage">
+  <div class="final-book" id="finalBook">
+    <div class="final-message">
+      <div>The Best Chapters</div>
+      <div>Are Yet To Come</div>
+      <div class="final-heart">♡</div>
+      <div>Because You Are In Them</div>
+    </div>
+  </div>
+</div>
+
+<div class="question-stage" id="questionStage">
+  <div class="question-card">
+    <h2>One last question...</h2>
+    <p>Will you stay for the rest of the story?</p>
+    <div class="choice-buttons">
+      <a class="choice-btn" href="letter6.html">Of Course ❤️</a>
+      <a class="choice-btn" href="letter6.html">Always ❤️</a>
+    </div>
+  </div>
+</div>
+
+
+<script>
+function finishLetter(){
+  document.getElementById("mainBook").classList.add("hide");
+  document.getElementById("mainIntro").style.opacity="0";
+  setTimeout(()=>{
+    document.getElementById("mainBook").style.display="none";
+    document.getElementById("mainIntro").style.display="none";
+    const finalStage=document.getElementById("finalStage");
+    const finalBook=document.getElementById("finalBook");
+    finalStage.classList.add("show");
+    setTimeout(()=>{
+      finalBook.classList.add("closing");
+      setTimeout(()=>{
+        finalStage.classList.remove("show");
+        document.getElementById("questionStage").classList.add("show");
+      },1400);
+    },3000);
+  },1000);
+}
+
+</script>
+</body>
+</html>
