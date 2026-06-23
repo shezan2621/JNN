@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 6 - The Beginning</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  overflow: hidden;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  background:
+    linear-gradient(rgba(8, 4, 2, 0.22), rgba(8, 4, 2, 0.42)),
+    url("chapter6-background.png");
+  background-size: cover;
+  background-position: center;
+  color: #fff4d8;
+}
+
+.stage {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 24px;
+}
+
+.message {
+  font-size: clamp(2.3rem, 7vw, 5rem);
+  line-height: 1.25;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-shadow:
+    0 6px 22px rgba(0,0,0,0.95),
+    0 0 34px rgba(255, 210, 120, 0.35);
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 1.15s ease, transform 1.15s ease;
+}
+
+.message.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.small-heart {
+  display: block;
+  margin-top: 24px;
+  font-size: clamp(2.2rem, 6vw, 4.2rem);
+  font-weight: 500;
+}
+
+.final-glow {
+  background: rgba(0,0,0,0.12);
+  border-radius: 28px;
+  padding: 28px 34px;
+  backdrop-filter: blur(2px);
+}
+
+@media (max-width: 600px) {
+  body {
+    background-position: center;
+  }
+
+  .message {
+    font-size: clamp(2rem, 10vw, 3.7rem);
+  }
+
+  .final-glow {
+    padding: 22px 20px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="stage">
+  <div class="message" id="message"></div>
+</div>
+
+<script>
+const messageBox = document.getElementById("message");
+
+const sequence = [
+  { text: "Chapter 6 Unlocked...", hold: 1900 },
+  { text: "Promise Recorded...", hold: 1900 },
+  { text: "Response Confirmed ❤️", hold: 2100 },
+  { text: "The Next Chapter<br>of Forever Awaits ❤️", hold: 3000 },
+  { text: "", hold: 1600 },
+  { text: "The End", hold: 2000 },
+  { text: "", hold: 1000 },
+  { text: "Or Perhaps...", hold: 1300 },
+  { text: "", hold: 900 },
+  { text: "This Is Just<br>The Beginning...<span class='small-heart'>♡</span>", hold: null, final: true }
+];
+
+let index = 0;
+
+function showSequence() {
+  const item = sequence[index];
+
+  messageBox.classList.remove("visible");
+
+  setTimeout(() => {
+    messageBox.innerHTML = item.text;
+
+    if (item.final) {
+      messageBox.classList.add("final-glow");
+    } else {
+      messageBox.classList.remove("final-glow");
+    }
+
+    if (item.text !== "") {
+      messageBox.classList.add("visible");
+    }
+
+    if (item.final) {
+      return;
+    }
+
+    setTimeout(() => {
+      index++;
+      if (index < sequence.length) {
+        showSequence();
+      }
+    }, item.hold);
+
+  }, 850);
+}
+
+window.onload = function() {
+  setTimeout(showSequence, 900);
+};
+</script>
+
+</body>
+</html>
