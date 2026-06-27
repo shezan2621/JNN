@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Special Day</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{min-height:100vh;font-family:Georgia,'Times New Roman',serif;background:linear-gradient(135deg,#f8efe6,#fff8f0);display:flex;justify-content:center;align-items:center;color:#3b2415;padding:20px}
+.card{background:rgba(255,255,255,.75);padding:40px 28px;border-radius:22px;max-width:420px;width:100%;text-align:center;box-shadow:0 12px 35px rgba(0,0,0,.12)}
+h1{font-size:34px;margin-bottom:18px;font-weight:normal}
+p{font-size:17px;margin-bottom:22px}
+input{width:100%;padding:14px;border-radius:12px;border:1px solid #c7a98d;font-size:16px;text-align:center;margin-bottom:16px}
+button{width:100%;padding:14px;border:none;border-radius:12px;background:#7b4a2f;color:#fff;font-size:16px;cursor:pointer}
+button:hover{background:#5f3824}
+#error{color:#9b1c1c;margin-top:14px;font-size:14px;display:none}
+</style>
+</head>
+<body>
+<div class="card">
+<h1>It's your special day</h1>
+<p>Enter the password to explore</p>
+<input type="password" id="password" placeholder="Password">
+<button onclick="checkPassword()">Explore</button>
+<div id="error">Wrong password. Look carefully at the letter.</div>
+</div>
+<script>
+function checkPassword(){
+const password=document.getElementById("password").value.trim().toLowerCase();
+if(password==="nila"){
+window.location.href="https://shezan2621.github.io/JNN/?v=1500";
+}else{
+document.getElementById("error").style.display="block";
+}}
+</script>
+</body>
+</html>
