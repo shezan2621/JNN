@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Special Day</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Great+Vibes&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --gold:#f8d98a;
+  --cream:#fff6dc;
+}
+
+body{
+  min-height:100vh;
+  overflow:hidden;
+  color:var(--cream);
+  font-family:'Cormorant Garamond',serif;
+  background:
+    radial-gradient(circle at 50% 105%, rgba(245,170,65,.25), transparent 30%),
+    radial-gradient(circle at 20% 20%, rgba(110,95,220,.25), transparent 25%),
+    radial-gradient(circle at 80% 12%, rgba(255,215,130,.16), transparent 20%),
+    linear-gradient(180deg,#050614 0%,#11102d 55%,#24142c 100%);
+}
+
+.moon{
+  position:fixed;
+  top:9%;
+  right:12%;
+  width:110px;
+  height:110px;
+  border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,#fff7d6,#f6d98a 60%,rgba(246,217,138,.2));
+  box-shadow:0 0 60px rgba(248,217,138,.45);
+  opacity:.85;
+}
+
+.mountains{
+  position:fixed;
+  inset:auto 0 0 0;
+  height:42vh;
+  background:
+    linear-gradient(140deg, transparent 0 35%, rgba(5,6,18,.9) 36% 63%, transparent 64%),
+    linear-gradient(220deg, transparent 0 30%, rgba(10,10,29,.94) 31% 67%, transparent 68%),
+    linear-gradient(160deg, transparent 0 40%, rgba(18,13,40,.95) 41% 70%, transparent 71%);
+  background-size:60% 100%,70% 100%,90% 100%;
+  background-position:left bottom,right bottom,center bottom;
+  background-repeat:no-repeat;
+  opacity:.9;
+}
+
+.water{
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  height:22vh;
+  background:
+    repeating-linear-gradient(0deg, rgba(255,220,140,.05) 0 2px, transparent 2px 10px),
+    linear-gradient(180deg, rgba(35,24,52,.1), rgba(5,6,17,.7));
+  opacity:.75;
+}
+
+.stars,.fireflies,.doorGlow,.fadeOut{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+}
+
+.stars{
+  background-image:
+    radial-gradient(#fff8d9 1px,transparent 1px),
+    radial-gradient(#ffe3a0 1px,transparent 1px),
+    radial-gradient(#ffffff 1px,transparent 1px);
+  background-size:80px 80px,130px 130px,190px 190px;
+  animation:twinkle 5s ease-in-out infinite;
+  opacity:.42;
+}
+
+@keyframes twinkle{
+  0%,100%{opacity:.25}
+  50%{opacity:.62}
+}
+
+.fireflies span{
+  position:absolute;
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:var(--gold);
+  box-shadow:0 0 16px var(--gold);
+  opacity:0;
+  animation:fly 10s linear infinite;
+}
+
+@keyframes fly{
+  0%{transform:translate(0,40px) scale(.5);opacity:0}
+  12%{opacity:.85}
+  50%{opacity:.45}
+  100%{transform:translate(80px,-110vh) scale(1.2);opacity:0}
+}
+
+.lantern{
+  position:fixed;
+  left:9%;
+  bottom:15%;
+  width:82px;
+  height:118px;
+  border:2px solid rgba(255,221,153,.82);
+  border-radius:22px 22px 16px 16px;
+  background:rgba(40,20,12,.18);
+  box-shadow:0 0 55px rgba(255,176,70,.42);
+  z-index:3;
+}
+
+.lantern:before{
+  content:"";
+  position:absolute;
+  top:-26px;
+  left:23px;
+  width:35px;
+  height:28px;
+  border-top:2px solid rgba(255,221,153,.9);
+  border-radius:50%;
+}
+
+.lantern:after{
+  content:"";
+  position:absolute;
+  left:21px;
+  top:28px;
+  width:36px;
+  height:62px;
+  border-radius:50%;
+  background:radial-gradient(circle,#fff4b5 0%,#ffc35e 45%,rgba(255,120,35,.25) 75%);
+  filter:blur(.4px);
+  animation:flame 2.6s ease-in-out infinite;
+}
+
+@keyframes flame{
+  0%,100%{transform:scale(.94);opacity:.78}
+  50%{transform:scale(1.1);opacity:1}
+}
+
+.stage{
+  position:relative;
+  z-index:5;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:24px;
+  text-align:center;
+}
+
+.card{
+  width:min(590px,100%);
+  padding:46px 30px;
+  border-radius:32px;
+  background:rgba(8,7,22,.42);
+  border:1px solid rgba(255,224,158,.26);
+  backdrop-filter:blur(9px);
+  box-shadow:0 0 65px rgba(255,207,116,.15),0 22px 70px rgba(0,0,0,.42);
+}
+
+.scene{
+  display:none;
+  animation:sceneIn 1.25s ease forwards;
+}
+
+@keyframes sceneIn{
+  from{opacity:0;transform:translateY(18px);filter:blur(6px)}
+  to{opacity:1;transform:translateY(0);filter:blur(0)}
+}
+
+.preline{
+  font-family:'Playfair Display',serif;
+  font-size:31px;
+  letter-spacing:.5px;
+  color:#ffe7aa;
+  text-shadow:0 0 18px rgba(255,218,140,.35);
+}
+
+.title{
+  font-family:'Great Vibes',cursive;
+  font-size:70px;
+  line-height:1;
+  font-weight:400;
+  color:#fff0bd;
+  text-shadow:0 0 30px rgba(255,218,140,.55);
+  margin-bottom:18px;
+}
+
+.handwriting{
+  font-family:'Great Vibes',cursive;
+  font-size:38px;
+  color:#fff3cb;
+  text-shadow:0 0 18px rgba(255,218,140,.35);
+  white-space:nowrap;
+  overflow:hidden;
+  width:0;
+  margin:0 auto 20px;
+  border-right:2px solid rgba(255,226,150,.8);
+  animation:typewrite 3.1s steps(38,end) forwards,blink .7s step-end infinite;
+}
+
+@keyframes typewrite{to{width:100%}}
+@keyframes blink{50%{border-color:transparent}}
+
+.subtitle{
+  font-size:22px;
+  line-height:1.45;
+  color:#fff5e0;
+  margin-bottom:20px;
+}
+
+.divider{
+  width:150px;
+  height:1px;
+  margin:18px auto 24px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+
+.formArea{
+  display:none;
+  animation:sceneIn 1.2s ease forwards;
+}
+
+.hint{
+  font-size:21px;
+  color:#f7d996;
+  font-style:italic;
+  margin-bottom:18px;
+}
+
+.inputWrap{
+  position:relative;
+  margin-bottom:16px;
+}
+
+.key{
+  position:absolute;
+  left:17px;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:20px;
+  color:var(--gold);
+}
+
+input{
+  width:100%;
+  padding:16px 18px 16px 50px;
+  border-radius:18px;
+  border:1px solid rgba(255,224,158,.68);
+  background:rgba(255,255,255,.11);
+  color:#fff8df;
+  font-family:'Cormorant Garamond',serif;
+  font-size:19px;
+  outline:none;
+  letter-spacing:1px;
+}
+
+input::placeholder{color:rgba(255,246,220,.68);letter-spacing:0}
+
+button{
+  width:100%;
+  padding:16px;
+  border:0;
+  border-radius:19px;
+  background:linear-gradient(135deg,#fff0b6,#e0a650,#8b531c);
+  color:#241204;
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow:0 0 30px rgba(255,211,121,.38);
+  transition:.25s;
+}
+
+button:hover{transform:translateY(-2px);box-shadow:0 0 45px rgba(255,220,130,.58)}
+button:disabled{cursor:default;opacity:.94}
+
+.feedback{
+  min-height:76px;
+  margin-top:18px;
+  font-size:19px;
+  line-height:1.4;
+}
+
+#error,#success,#welcome{display:none}
+#error{color:#ffd3d3}
+#success,#welcome{color:#fff0b9;text-shadow:0 0 18px rgba(255,225,145,.7)}
+
+.footer{
+  font-size:15px;
+  letter-spacing:1px;
+  color:rgba(255,242,210,.68);
+}
+
+.shake{animation:shake .35s ease}
+@keyframes shake{
+  0%,100%{transform:translateX(0)}
+  25%{transform:translateX(-7px)}
+  50%{transform:translateX(7px)}
+  75%{transform:translateX(-5px)}
+}
+
+.doorGlow{
+  opacity:0;
+  background:radial-gradient(circle at 50% 52%,rgba(255,218,128,.95),rgba(255,190,80,.35) 20%,transparent 42%);
+  transition:opacity 1.3s ease;
+  z-index:10;
+}
+
+.doorGlow.active{opacity:1}
+
+.fadeOut{
+  background:#03030a;
+  opacity:0;
+  transition:opacity 1.5s ease;
+  z-index:20;
+}
+
+.fadeOut.active{opacity:1}
+
+@media(max-width:620px){
+  .card{padding:40px 22px}
+  .preline{font-size:27px}
+  .title{font-size:56px}
+  .handwriting{font-size:31px}
+  .subtitle{font-size:20px}
+  .lantern{width:58px;height:86px;left:6%;bottom:9%;opacity:.72}
+  .lantern:before{left:16px;width:25px}
+  .lantern:after{left:15px;top:20px;width:27px;height:46px}
+  .moon{width:78px;height:78px;right:9%;top:8%}
+}
+</style>
+</head>
+
+<body>
+
+<div class="moon"></div>
+<div class="mountains"></div>
+<div class="water"></div>
+<div class="stars"></div>
+<div class="fireflies" id="fireflies"></div>
+<div class="lantern"></div>
+<div class="doorGlow" id="doorGlow"></div>
+<div class="fadeOut" id="fadeOut"></div>
+
+<main class="stage">
+  <section class="card">
+
+    <div class="scene preline" id="s1">Before anything else...</div>
+
+    <div class="scene preline" id="s2">There is something waiting for you.</div>
+
+    <div class="scene" id="s3">
+      <h1 class="title">It's your special day.</h1>
+      <div class="handwriting">Some stories aren't read... they're unlocked.</div>
+      <p class="subtitle">The first step is hidden in the letter you already have.</p>
+      <div class="divider"></div>
+    </div>
+
+    <div class="formArea" id="formArea">
+      <div class="hint">The key is already with you.</div>
+
+      <div class="inputWrap" id="inputWrap">
+        <span class="key">🔑</span>
+        <input type="password" id="password" placeholder="Enter the word" autocomplete="off">
+      </div>
+
+      <button id="unlockBtn" onclick="checkPassword()">Begin</button>
+
+      <div class="feedback">
+        <div id="error">
+          Not quite...<br>
+          Read the letter once more.<br>
+          Every clue was placed there for a reason.
+        </div>
+
+        <div id="success">
+          The door is opening...
+        </div>
+
+        <div id="welcome">
+          Welcome, Nila.
+        </div>
+      </div>
+
+      <div class="footer">One word. One memory. One beginning.</div>
+    </div>
+
+  </section>
+</main>
+
+<script>
+const finalUrl = "https://shezan2621.github.io/JNN/?v=1500";
+
+/* SHA-256 hash for password: nila */
+const passwordHash = "9b3ef8b65c91229f0707269dc5bdd8d3ebd4283a07f2588dc946440dd4ff922f";
+
+async function sha256(text){
+  const data = new TextEncoder().encode(text);
+  const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+  return Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2,"0")).join("");
+}
+
+function show(id){document.getElementById(id).style.display="block";}
+function hide(id){document.getElementById(id).style.display="none";}
+
+setTimeout(()=>show("s1"),700);
+setTimeout(()=>{hide("s1");show("s2");},3300);
+setTimeout(()=>{hide("s2");show("s3");},6000);
+setTimeout(()=>{show("formArea");document.getElementById("password").focus();},9300);
+
+async function checkPassword(){
+  const box=document.getElementById("password");
+  const wrap=document.getElementById("inputWrap");
+  const button=document.getElementById("unlockBtn");
+  const error=document.getElementById("error");
+  const success=document.getElementById("success");
+  const welcome=document.getElementById("welcome");
+
+  const entered=box.value.trim().toLowerCase();
+  const enteredHash=await sha256(entered);
+
+  if(enteredHash===passwordHash){
+    error.style.display="none";
+    success.style.display="block";
+    button.innerText="Unlocking...";
+    button.disabled=true;
+    box.disabled=true;
+
+    document.getElementById("doorGlow").classList.add("active");
+
+    setTimeout(()=>{
+      success.style.display="none";
+      welcome.style.display="block";
+    },1700);
+
+    setTimeout(()=>{
+      document.getElementById("fadeOut").classList.add("active");
+    },3800);
+
+    setTimeout(()=>{
+      window.location.href=finalUrl;
+    },5400);
+
+  }else{
+    success.style.display="none";
+    welcome.style.display="none";
+    error.style.display="block";
+    box.value="";
+    box.focus();
+    wrap.classList.remove("shake");
+    void wrap.offsetWidth;
+    wrap.classList.add("shake");
+  }
+}
+
+document.getElementById("password").addEventListener("keydown",e=>{
+  if(e.key==="Enter") checkPassword();
+});
+
+const fireflies=document.getElementById("fireflies");
+for(let i=0;i<52;i++){
+  const f=document.createElement("span");
+  f.style.left=Math.random()*100+"%";
+  f.style.bottom=(Math.random()*45-8)+"%";
+  f.style.animationDelay=Math.random()*10+"s";
+  f.style.animationDuration=(7+Math.random()*8)+"s";
+  f.style.width=(3+Math.random()*5)+"px";
+  f.style.height=f.style.width;
+  fireflies.appendChild(f);
+}
+</script>
+
+</body>
+</html>
