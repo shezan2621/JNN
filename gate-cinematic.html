@@ -719,8 +719,8 @@ button:disabled {
 <script>
 const finalUrl = "https://shezan2621.github.io/JNN/?v=1500";
 
-/* Password is: nila */
-const passwordHash = "a75c57aec5590191bdf33aab600ace32b9066434c68011fe2406e7b46e274626";
+/* Password is: itwasalwaysyou */
+const passwordHash = "6c5c577b9d998ebcc64f9ce87a988826bbd832225e74a967c4d6fafb3f10be15";
 
 async function sha256(text) {
   const data = new TextEncoder().encode(text);
@@ -760,7 +760,7 @@ async function checkPassword() {
   const error = document.getElementById("error");
   const success = document.getElementById("success");
   const welcome = document.getElementById("welcome");
-  const entered = box.value.trim().toLowerCase();
+  const entered = box.value.trim().toLowerCase().replace(/\s+/g, "");
   const enteredHash = await sha256(entered);
 
   if (enteredHash === passwordHash) {
